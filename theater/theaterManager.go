@@ -166,33 +166,39 @@ func (tM *TheaterManager) LogCommandUDP(event *GameSpy.CommandFESL) {
 
 // LogCommand log data to a debug file for further analysis
 func (tM *TheaterManager) LogCommand(event GameSpy.EventClientFESLCommand) {
-	b, err := json.MarshalIndent(event.Command.Message, "", "	")
-	if err != nil {
-		panic(err)
-	}
+	/*
+		Making somes random crash, disabled for now because not usefull
+			b, err := json.MarshalIndent(event.Command.Message, "", "	")
+			if err != nil {
+				panic(err)
+			}
 
-	commandType := "request"
+			commandType := "request"
 
-	os.MkdirAll("./commands/"+event.Command.Query+"."+event.Command.Message["TXN"]+"", 0777)
-	err = ioutil.WriteFile("./commands/"+event.Command.Query+"."+event.Command.Message["TXN"]+"/"+commandType, b, 0644)
-	if err != nil {
-		panic(err)
-	}
+			os.MkdirAll("./commands/"+event.Command.Query+"."+event.Command.Message["TXN"]+"", 0777)
+			err = ioutil.WriteFile("./commands/"+event.Command.Query+"."+event.Command.Message["TXN"]+"/"+commandType, b, 0644)
+			if err != nil {
+				panic(err)
+			}
+	*/
 }
 
 func (tM *TheaterManager) logAnswer(msgType string, msgContent map[string]string, msgType2 uint32) {
-	b, err := json.MarshalIndent(msgContent, "", "	")
-	if err != nil {
-		panic(err)
-	}
+	/*
+		Making somes random crash, disabled for now because not usefull
+			b, err := json.MarshalIndent(msgContent, "", "	")
+			if err != nil {
+				panic(err)
+			}
 
-	commandType := "answer"
+			commandType := "answer"
 
-	os.MkdirAll("./commands/"+msgType+"."+msgContent["TXN"]+"", 0777)
-	err = ioutil.WriteFile("./commands/"+msgType+"."+msgContent["TXN"]+"/"+commandType, b, 0644)
-	if err != nil {
-		panic(err)
-	}
+			os.MkdirAll("./commands/"+msgType+"."+msgContent["TXN"]+"", 0777)
+			err = ioutil.WriteFile("./commands/"+msgType+"."+msgContent["TXN"]+"/"+commandType, b, 0644)
+			if err != nil {
+				panic(err)
+			}
+	*/
 }
 
 func (tM *TheaterManager) newClient(event GameSpy.EventNewClient) {
