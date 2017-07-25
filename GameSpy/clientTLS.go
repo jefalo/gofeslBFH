@@ -13,7 +13,7 @@ import (
 
 	"../log"
 
-	"github.com/HeroesAwaken/GoAwaken/core"
+	"../core"
 )
 
 type ClientTLS struct {

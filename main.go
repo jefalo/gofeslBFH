@@ -7,10 +7,10 @@ import (
 	"os/signal"
 	"runtime"
 
+	"./core"
+	"./fesl"
 	"./log"
 	"./theater"
-
-	"github.com/HeroesAwaken/GoAwaken/core"
 	"github.com/go-redis/redis"
 
 	"net/http"
@@ -117,9 +117,9 @@ func main() {
 		log.Fatalln("Error connecting to redis:", err)
 	}
 
-	feslManager := new(FeslManager)
+	feslManager := new(fesl.FeslManager)
 	feslManager.New("FM", "18270", *certFileFlag, *keyFileFlag, false, dbSQL, redisClient)
-	serverManager := new(FeslManager)
+	serverManager := new(fesl.FeslManager)
 	serverManager.New("SFM", "18051", *certFileFlag, *keyFileFlag, true, dbSQL, redisClient)
 
 	theaterManager := new(theater.TheaterManager)
