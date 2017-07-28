@@ -78,8 +78,8 @@ func (fM *FeslManager) NuLogin(event GameSpy.EventClientTLSCommand) {
 		return
 	}
 
-	// Currently only allow admins & testers
-	if sessionID != event.Command.Message["encryptedInfo"] || !confirmedEm || banned || (!isAdmin && !isTester) {
+	// ready for all
+	if sessionID != event.Command.Message["encryptedInfo"] || !confirmedEm || banned {
 		log.Noteln("User not worthy: " + username)
 		loginPacket := make(map[string]string)
 		loginPacket["TXN"] = "NuLogin"

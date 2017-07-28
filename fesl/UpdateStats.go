@@ -30,8 +30,9 @@ func (fM *FeslManager) UpdateStats(event GameSpy.EventClientTLSCommand) {
 		for j := 0; j < statsNum; j++ {
 			if event.Command.Message["u."+strconv.Itoa(i)+".s."+strconv.Itoa(j)+".t"] != "" {
 				query += event.Command.Message["u."+strconv.Itoa(i)+".s."+strconv.Itoa(j)+".k"] + "='" + MysqlRealEscapeString(event.Command.Message["u."+strconv.Itoa(i)+".s."+strconv.Itoa(j)+".t"]) + "', "
+			} else if event.Command.Message["u."+strconv.Itoa(i)+".s."+strconv.Itoa(j)+".k"] == "c_wallet_hero" || event.Command.Message["u."+strconv.Itoa(i)+".s."+strconv.Itoa(j)+".k"] == "c_wallet_valor" {
+				query += event.Command.Message["u."+strconv.Itoa(i)+".s."+strconv.Itoa(j)+".k"] + "= " + event.Command.Message["u."+strconv.Itoa(i)+".s."+strconv.Itoa(j)+".k"] + MysqlRealEscapeString(event.Command.Message["u."+strconv.Itoa(i)+".s."+strconv.Itoa(j)+".v"]) + ", "
 			} else {
-				// TODO: Needs to be fixed, v = change, so v = -1 means substract one
 				query += event.Command.Message["u."+strconv.Itoa(i)+".s."+strconv.Itoa(j)+".k"] + "='" + MysqlRealEscapeString(event.Command.Message["u."+strconv.Itoa(i)+".s."+strconv.Itoa(j)+".v"]) + "', "
 			}
 		}
