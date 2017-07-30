@@ -157,7 +157,12 @@ func (fM *FeslManager) GetStats(event GameSpy.EventClientTLSCommand) {
 		//DEV CODE; REMOVE BEFORE TAKING LIVE!!!!!
 		//return
 	}
-	log.Noteln(stmt)
+	sql := "UPDATE `west_heroes_stats` SET c_wallet_hero = round(level/2-0.1,0) WHERE pid = " + owner + ""
+	_, err = fM.db.Exec(sql)
+	if err != nil {
+		log.Errorln(err)
+	}
+
 	err = stmt.QueryRow(owner).Scan(dest...)
 	if err != nil {
 		log.Debugln(err)

@@ -15,7 +15,7 @@ func (fM *FeslManager) NuLookupUserInfo(event GameSpy.EventClientTLSCommand) {
 		return
 	}
 
-	if event.Client.RedisState.Get("clientType") == "server" && event.Command.Message["userInfo.0.userName"] == "Jefalo" {
+	if event.Client.RedisState.Get("clientType") == "server" {
 
 		log.Noteln("LookupUserInfo - SERVER MODE")
 		stmt, err := fM.db.Prepare("SELECT name, id FROM west_heroes_servers WHERE id =" + event.Client.RedisState.Get("uID"))
