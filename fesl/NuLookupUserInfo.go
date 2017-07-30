@@ -15,6 +15,7 @@ func (fM *FeslManager) NuLookupUserInfo(event GameSpy.EventClientTLSCommand) {
 		return
 	}
 
+	/* bugged, will take a look later
 	if event.Client.RedisState.Get("clientType") == "server" {
 
 		log.Noteln("LookupUserInfo - SERVER MODE")
@@ -47,7 +48,7 @@ func (fM *FeslManager) NuLookupUserInfo(event GameSpy.EventClientTLSCommand) {
 		fM.logAnswer(event.Command.Query, personaPacket, event.Command.PayloadID)
 		return
 
-	}
+	}*/
 
 	log.Noteln("LookupUserInfo - CLIENT MODE! " + event.Command.Message["userInfo.0.userName"])
 
